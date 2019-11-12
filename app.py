@@ -25,7 +25,7 @@ def index():
         
         mailer.send(phone=phone, name=name, user_email=user_email, message=message)
 
-        return redirect(url_for('index'))
+        return redirect(url_for('index', _anchor='contactForm'))
     
 class Mailer:
     def __init__(self):
