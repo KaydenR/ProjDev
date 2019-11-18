@@ -6,6 +6,8 @@ import os
 
 app = Flask(__name__)
 
+app.secret_key = os.environ.get('SECRET_KEY')
+
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
@@ -25,6 +27,7 @@ def index():
         
         mailer.send(phone=phone, name=name, user_email=user_email, message=message)
 
+        flash('Message Sent! We will be reaching out to you as soon as possible!', 'success')
         return redirect(url_for('index', _anchor='contactForm'))
     
 class Mailer:
