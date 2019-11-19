@@ -30,6 +30,9 @@ def index():
         flash('Message Sent! We will be reaching out to you as soon as possible!', 'success')
         return redirect(url_for('index', _anchor='contactForm'))
     
+    else:
+        print('Error when sending')
+
 class Mailer:
     def __init__(self):
         self.PASSWORD = os.environ.get('EMAIL_PASSWORD')
